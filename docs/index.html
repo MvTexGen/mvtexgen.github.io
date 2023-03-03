@@ -226,14 +226,14 @@ figure {
 
 <div class="topnav" id="myTopnav">
   <a href="https://www.nvidia.com/"><img width="100%" src="assets/nvidia.svg"></a>
-  <a href="https://nv-tlabs.github.io/" ><strong>Toronto AI Lab</strong></a>
+  <a href="https://nv-tlabs.github.io/" ><strong>Shanghai AI Lab</strong></a>
 </div>
 
 <!-- End : Google Analytics Code -->
 <script type="text/javascript" src="../js/hidebib.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
 <head>
-    <title>GET3D: A Generative Model of High Quality 3D Textured Shapes Learned from Images</title>
+    <title>SLIDE: Controllable Mesh Generation Through Sparse Latent Point Diffusion Models</title>
     <meta property="og:description" content="GET3D: A Generative Model of High Quality 3D Textured Shapes Learned from Images"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
@@ -243,7 +243,7 @@ figure {
  <body>
 <div class="container">
     <div class="paper-title">
-      <h1>GET3D: A Generative Model of High Quality 3D Textured Shapes Learned from Images</h1>
+      <h1>SLIDE: Controllable Mesh Generation Through Sparse Latent Point Diffusion Models</h1>
     </div>
 
     
@@ -251,8 +251,8 @@ figure {
         <div class="author-row">
             
             
-            <div class="col-4 text-center"><a href="http://www.cs.toronto.edu/~jungao/">Jun Gao</a><sup>1,2,3</sup></div>
-            <div class="col-4 text-center"><a href="http://www.cs.toronto.edu/~shenti11/">Tianchang Shen</a><sup>1,2,3</sup></div>
+            <div class="col-4 text-center"><a href="http://www.cs.toronto.edu/~jungao/">Zhaoyang Lyu</a><sup>1</sup></div>
+            <div class="col-4 text-center"><a href="http://www.cs.toronto.edu/~shenti11/">Jinyi Wang</a><sup>1,2</sup></div>
             <div class="col-4 text-center"><a href="http://www.cs.toronto.edu/~zianwang/">Zian Wang</a><sup>1,2,3</sup></div>
             <div class="col-4 text-center"><a href="http://www.cs.toronto.edu/~wenzheng/">Wenzheng Chen</a><sup>1,2,3</sup></div>
             <div class="col-5 text-center"><a href="https://kangxue.org/">Kangxue Yin</a><sup>1</sup></div>
@@ -263,12 +263,12 @@ figure {
         </div>
 
         <div class="affil-row">
-            <div class="col-3 text-center"><sup>1</sup>NVIDIA</a></div>
-            <div class="col-3 text-center"><sup>2</sup>University of Toronto</div>
+            <div class="col-3 text-center"><sup>1</sup>Shanghai AI lab</a></div>
+            <div class="col-3 text-center"><sup>2</sup>Shanghai Jiatong University</div>
             <div class="col-3 text-center"><sup>3</sup>Vector Institute</div>
         </div>
         <div class="affil-row">
-            <div class="venue text-center"><b>NeurIPS 2022</b></div>
+            <div class="venue text-center"><b>CVPR 2023</b></div>
         </div>
 
         <div style="clear: both">
@@ -291,11 +291,11 @@ figure {
 
     <section id="teaser">
             <figure style="width: 100%;">
-                <a href="assets/get3d_model.png">
-                    <img width="100%" src="assets/get3d_model.png">
+                <a href="assets/overview.png">
+                    <img width="100%" src="assets/overview.png">
                 </a>
                 <p class="caption" style="margin-bottom: 1px;  text-align: justify">
-                   We generate a 3D SDF and a texture field via two latent codes. We utilize DMTet to extract a 3D surface mesh from the SDF, and query the texture field at surface points to get colors. We train with adversarial losses defined on 2D images. In particular, we use a rasterization-based differentiable renderer to obtain RGB images and silhouettes. We utilize two 2D discriminators, each on RGB image, and silhouette, respectively, to classify whether the inputs are real or fake. The whole model is end-to-end trainable.
+                    The autoencoder that encodes a mesh to features at the sparse latent points and decode it back to a mesh.
                 </p>
             </figure>
             <br>
@@ -314,7 +314,20 @@ figure {
         <h2>Abstract</h2>
         <hr>
         <p>
-            As several industries are moving towards modeling massive 3D virtual worlds, the need for content creation tools that can scale in terms of the quantity, quality, and diversity of 3D content is becoming evident. In our work, we aim to train performant 3D generative models that synthesize textured meshes which can be directly consumed by 3D rendering engines, thus immediately usable in downstream applications. Prior works on 3D generative modeling either lack geometric details, are limited in the mesh topology they can produce, typically do not support textures, or utilize neural renderers in the synthesis process, which makes their use in common 3D software non-trivial. In this work, we introduce GET3D, a Generative model that directly generates Explicit Textured 3D meshes with complex topology, rich geometric details, and high fidelity textures. We bridge recent success in the differentiable surface modeling, differentiable rendering as well as 2D Generative Adversarial Networks to train our model from 2D image collections. GET3D is able to generate high-quality 3D textured meshes, ranging from cars, chairs, animals, motorbikes and human characters to buildings, achieving significant improvements over previous methods.
+            Mesh generation is of great value in various applications involving computer graphics and virtual content, 
+            yet designing generative models for meshes is challenging due to their irregular data structure and inconsistent topology of meshes in the same category.
+            In this work, we design a novel sparse latent point diffusion model for mesh generation.
+            Our key insight is to regard point clouds as an intermediate representation of meshes,
+            and model the distribution of point clouds instead.
+            While meshes can be generated from point clouds via techniques like Shape as Points (SAP),
+            the challenges of directly generating meshes can be effectively avoided.
+            To boost the efficiency and controlability of our mesh generation method,
+            we propose to further encode point clouds to a set of sparse latent points with point-wise semantic meaningful features,
+            where two DDPMs are trained in the space of sparse latent points to respectively model the distribution of the latent point positions and features at these latent points.
+            We find that sampling in this latent space is faster than directly sampling dense point clouds.
+            Moreover,
+            the sparse latent points also enable us to explicitly control both the overall structures and local details of the generated meshes.
+            Extensive experiments are conducted on the ShapeNet dataset, where our proposed sparse latent point diffusion model achieves superior performance in terms of generation quality and controlability when compared to existing methods.
             </p>
     </section>
 
@@ -326,7 +339,7 @@ figure {
                 <a href="assets/paper.pdf"><img class="screenshot" src="assets/get3d_paper_figure.png"></a>
             </div>
             <div style="width: 50%">
-                <p><b>GET3D: A Generative Model of High Quality 3D Textured Shapes Learned from Images</b></p>
+                <p><b>SLIDE: Controllable Mesh Generation Through Sparse Latent Point Diffusion Models</b></p>
                 <p>Jun Gao, Tianchang Shen, Zian Wang, Wenzheng Chen, Kangxue Yin, Daiqing Li, Or Litany, Zan Gojcic, Sanja Fidler</p>
                 <div><span class="material-icons"> description </span><a href="assets/paper.pdf"> PDF</a></div>
                 <div><span class="material-icons"> description </span><a href="https://arxiv.org/abs/2209.11163"> arXiv version</a></div>
