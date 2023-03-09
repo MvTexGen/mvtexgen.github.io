@@ -371,11 +371,11 @@ figure {
                 Your browser does not support the video tag.
             </video>
             <p class="caption" style="margin-bottom: 1px; text-align: justify;">
-                In each row, we show  shapes generated from the same geometry latent code, while changing the texture latent code. In each column, we show  shapes generated from the same texture latent code, while changing the geometry code. Our model achieves a good disentanglement between geometry and texture. 
+                Through moving the two points of chair legs to control the position of chair legs.
                 </p>
         </figure>
 
-        <h2>Movement of sparse latent points to control generated mesh</h2>
+        <h2>Interpolation of two different lamps</h2>
         <hr>
 
         <figure style="width: 100%;">
@@ -384,12 +384,12 @@ figure {
                 Your browser does not support the video tag.
             </video>
             <p class="caption" style="margin-bottom: 1px; text-align: justify;">
-                In each row, we show shapes generated from the same texture latent code, while interpolating the geometry latent code from left to right. In each column, we show shapes generated from the same geometry latent code, while interpolating the texture code from top to bottom. This result demonstrates a meaningful interpolation for each of them. 
+                Give two lamps, we get the interpolation results of two lamps by interpolating the sparse latent points.
                 </p>
         </figure>
 
 
-        <h2>Latent Code Interpolation</h2>
+        <h2>Interpolating upper part of two different lamps</h2>
         <hr>
         <figure style="width: 100%;">
              <video class="centered" width="90%" controls muted loop autoplay>
@@ -397,7 +397,7 @@ figure {
                 Your browser does not support the video tag.
             </video>
             <p class="caption" style="margin-bottom: 1px; text-align: justify;">
-                In each subfigure, we apply a random walk in the latent space and generate corresponding 3D shapes. GET3D is able to generate a smooth transition between different shapes for all categories. 
+                Give two lamps, we only interpolate the upper part of two lamps by interpolating the sparse latent points.
                 </p>
         </figure>
 
@@ -410,7 +410,7 @@ figure {
                 Your browser does not support the video tag.
             </video>
             <p class="caption" style="margin-bottom: 1px; text-align: justify;">
-            In each row, we locally perturb the latent code by adding a small noise. In this way, GET3D is able to generate similar looking shapes with slight difference locally. 
+                Combining the sparse latent points of two lamps to generate a new lamp.
                 </p>
         </figure>
 
