@@ -1,1 +1,17 @@
-waiting for published
+@misc{https://doi.org/10.48550/arxiv.2303.07938,
+  doi = {10.48550/ARXIV.2303.07938},
+  
+  url = {https://arxiv.org/abs/2303.07938},
+  
+  author = {Lyu, Zhaoyang and Wang, Jinyi and An, Yuwei and Zhang, Ya and Lin, Dahua and Dai, Bo},
+  
+  keywords = {Computer Vision and Pattern Recognition (cs.CV), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  
+  title = {Controllable Mesh Generation Through Sparse Latent Point Diffusion Models},
+  
+  publisher = {arXiv},
+  
+  year = {2023},
+  
+  copyright = {Creative Commons Attribution 4.0 International}
+}
